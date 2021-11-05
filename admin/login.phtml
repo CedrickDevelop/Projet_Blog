@@ -1,0 +1,36 @@
+<main>
+  
+  <!-- FORMULAIRE CONNEXION -->
+  <form class="d-flex flex-column justify-content-lg-center align-items-lg-center bd-highlight col-lg-12 m-4" method="post" action="./login.php">
+
+    <h1 class=" col-lg-4 mb-3 text-center">Espace de connexion</h1>
+
+    <div class=" col-lg-4 mb-3 ">
+      <!-- Email -->
+      <label for="email_login" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email_login" aria-describedby="emailHelp" placeholder="Email de connexion" name="email_login" value="<?php if(isset($_POST['email_login'])){echo $_POST['email_login'];} ?>">
+    </div>
+
+    <?php if(!empty($errors['email'])): ?>
+      <small class='text-danger'> <?= $errors['email'];?></small>
+    <?php endif ?>  
+
+    <!-- Password -->
+    <div class=" col-lg-4 mb-3">
+      <label for="password_login" class="form-label"  >Mot de passe</label>
+      <input type="password" class="form-control" id="password_login" name="password_login" placeholder="Mot de passe connexion">
+    </div>
+
+    <?php if(!empty($errors['password'])): ?>
+      <small class='text-danger'> <?= $errors['password'];?></small>
+    <?php endif ?> 
+
+    <?php if(!empty($errors['formulaire'])): ?>
+      <small class='text-danger'> <?= $errors['formulaire'];?></small>
+    <?php endif ?> 
+
+    <!-- Submit -->
+    <button type="submit" class="btn btn-primary col-lg-4 mb-3" name="submit_login">Connecter</button>
+  </form>
+
+</main>

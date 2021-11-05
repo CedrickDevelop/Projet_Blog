@@ -1,0 +1,42 @@
+<main>
+    <!-- Entete de la page -------------------------------> 
+  
+    <section class="accueil">
+      <div class="titre">
+          <h1>Accueil Blog de Cedrick</h1>
+          
+      </div>
+    </section>
+
+
+    <!-- LEs différents articles----------------------------> 
+    <h2>Les derniers articles</h2>
+    <section class="__articles">
+  
+      <?php foreach ($articles as $article ): ?>
+      <article class="__box">
+        <div class="__box-top">
+  
+          <h3> <?= $article['title']; ?></h3>
+          <p>Dans la catégorie : <span class="-categorie"><?= $article['name']; ?></span></p>
+  
+        </div>
+        <div class="__box-middle">
+  
+          <p><?=  substr($article['contents'], 0, 150) ?> ... <a href="show_article.php?id=<?= $article['id'] ?>">Lire la suite de l'article</a></p>
+  
+          
+  
+        </div>
+  
+        <div class="__box-bottom">
+  
+          <p>Rédigé par <?= $article['firstname'].' '.$article['lastname']; ?> le <?= $article['created_at']; ?></p>
+  
+        </div>
+      </article>
+      <?php endforeach ; ?>
+  
+    </section>
+
+</main>    

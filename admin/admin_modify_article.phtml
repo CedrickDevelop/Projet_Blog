@@ -1,0 +1,94 @@
+
+<!-- L'ensemble du bloc Administration -->
+<main class="d-flex justify-content-lg-between col-lg-11">
+  <!-- Menu à gauche  -->
+
+  <section class="col-lg-4">
+    <ul class="list-group p-4">
+      <li class="list-group-item list-group-item-action  active mx-auto" aria-current="true">Gestion des articles</li>
+      <li class="list-group-item list-group-item-action  mx-auto">Gestion des catégories</li>
+      <li class="list-group-item list-group-item-action mx-auto">Gestion des auteurs</li>
+    </ul>
+  </section>
+
+
+
+
+  <!-- Bloc central droit -->
+  <section class="d-flex flex-column justify-content-lg-between bd-highlight col-lg-8 m-4">
+    <article class="p-12 d-flex flex-column ">
+      <h1 class="text-center">Modifier un article</h1>
+    </article>
+
+    <article>
+
+    <!-- // FORMULAIRE *************************** -->
+    <form method="post" action ="./admin_modify_article.php?id=<?= $article['id']; ?>">
+
+         <!-- // CATEGORIES *************************** -->
+        <div class="mb-3">
+          <label for="select_category" class="form-label">Catégorie de l'article</label>
+
+          <select id="select_category" name="select_category" class="form-select">
+
+          <option><?= $article['name'];  ?></option>
+          <?php foreach($categories as $categorie): ?>
+            <option><?= $categorie['name'];  ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
+
+        <?php if (!empty($error['category'])) : ?>
+            <small class="text-danger"><?= $error['category'] ?></small>
+        <?php endif; ?>
+
+        <!-- // AUTHOR *************************** -->
+        <div class="mb-3">
+          <label for="select_author" class="form-label">Auteur</label>
+          <select id="select_author" name="select_author" class="form-select">
+
+          <option><?= $article['firstname']." ".$article['lastname'] ;  ?></option>
+            <?php foreach($authors as $author): ?>
+              <option><?= $author['firstname']." ".$author['lastname'];  ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
+
+        <?php if (!empty($error['author'])) : ?>
+          <small class="text-danger"><?= $error['author'] ?></small>
+        <?php endif; ?>
+
+      <!-- Ajouter un titre -->  
+      <div class="mb-3">
+        <label for="write_title" class="form-label">Titre de l'article*</label>
+        <input type="text" class="form-control <?= !empty($error['postTitle'])? 'is-invalid' : '' ?>" id="write_title" name="write_title"aria-describedby="write title" maxlength="100" minlength="10" value="<?= $article['title']; ?>">
+      </div>
+      
+      <?php if (!empty($error['postTitle'])) : ?>
+            <small class="text-danger"><?= $error['postTitle'] ?></small>
+        <?php endif; ?>
+
+      <!-- // CONTENT *************************** -->
+      <div class="mb-3">
+        <label for="write_content" class="form-label">Texte de l'article*</label>
+        <textarea type="text" class="form-control  <?= !empty($error['content'])? 'is-invalid' : '' ?>" id="write_content" name="write_content"aria-describedby="write content" maxlength="1000" minlength="100" rows="8" >
+           <?=  $article['contents']; ?> 
+        </textarea>
+      </div>
+      
+      <?php if (!empty($error['content'])) : ?>
+            <small class="text-danger"><?= $error['content'] ?></small>
+      <?php endif; ?>
+
+      <!-- ID -->
+      <input type="hidden" name="id" value="<?= $article['id']; ?>">
+
+      
+      <button type="submit" class="btn btn-primary" value="Enregistrer" name="submit">Enregistrer</button>
+    </form>
+
+    </article>
+  </section>
+
+
+</main>

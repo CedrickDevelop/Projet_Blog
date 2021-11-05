@@ -1,0 +1,116 @@
+
+<!-- L'ensemble du bloc Administration -->
+<main class="d-flex justify-content-lg-between col-lg-11">
+  <!-- Menu à gauche  -->
+
+  <section class="col-lg-4">
+    <ul class="list-group p-4">
+      <li class="list-group-item list-group-item-action  active mx-auto" aria-current="true">Gestion des articles</li>
+      <li class="list-group-item list-group-item-action  mx-auto">Gestion des catégories</li>
+      <li class="list-group-item list-group-item-action mx-auto">Gestion des auteurs</li>
+    </ul>
+  </section>
+
+
+
+
+  <!-- Bloc central droit -->
+  <section class="d-flex flex-column justify-content-lg-between bd-highlight col-lg-8 m-4">
+    <article class="p-12 d-flex flex-column ">
+      <h1 class="text-center">Gestion des articles</h1>
+    </article>
+
+    <article>
+      <div>
+        <button class="btn btn-primary m-4"><a href="./admin_create_article.php"><p class="text-light text-decoration-none">Créer un article</p> </a> </button>
+      </div>
+
+      
+
+
+      <table class="table table-striped w-100 m-3 ">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">ID</th>
+            <th scope="col">Creation</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Voir</th>
+            <th scope="col">Modifier</th>
+            <th scope="col">Supprimer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Presentation des articles --------------------------------------------->
+          <?php foreach($articles as $article): ?>
+            <tr >
+              <th scope="row"><?= $article['id']; ?></th>
+              <td><?= $article['created_at']; ?></td>
+              <td><?= substr($article['title'], 0, 48); ?>...</td>
+              <td><?= $article['firstname']." ".$article['lastname']; ?></td>
+              <td><?= $article['name']; ?></td>
+              
+              <!-- Bouton pour voir l'article -->
+              <td> 
+                <button class="btn btn-success  ">
+                  <a class="text-dark d-flex justify-content-center align-items-center  " href="../show_article.php?id=<?= $article['id']?> ">
+                  <i class="fas fa-eye text-decoration-none"></i>
+                  </a>
+                </button> 
+              </td>
+
+              <!-- Bouton pour modifier l'article -->
+              <td> 
+                <button class="btn btn-warning">
+                  <a href="./admin_modify_article.php?id=<?= $article['id']; ?>" class="text-dark d-flex justify-content-center align-items-center">
+                  <i class="fas fa-pen-nib"></i>
+                  </a>
+                </button> 
+              </td>
+
+              <!-- Bouton pour supprimer l'article -->
+              <!-- <td> 
+                <button class="btn btn-danger ">
+                  <a href="./admin_delete_article.php?id=<?= $article['id']; ?>" class="text-dark d-flex justify-content-center align-items-center  ">
+                    <i class="fas fa-trash-alt "></i>
+                  </a>
+                </button>
+              </td> -->
+              <td> 
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-delete<?= $article['id']; ?>" class="btn btn-danger ">
+                    <i class="fas fa-trash-alt "></i>
+                  </a>
+                </button>
+                <div class="modal" id="modal-delete<?= $article['id']; ?>">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Suppression de l'article</h4>
+                      </div>
+                      <div class="modal-body">
+                        Êtes vous sur de vouloir supprimer l'article
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='./admin_delete_article.php?id=<?= $article['id']; ?>'">Supprimer</button>
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+          
+        </tbody>
+      </table>
+            
+      <p>Liste des posts classés par ordre chronologique inversé : <?= count($articles); ?> au total</p>
+
+    </article>
+  </section>
+
+
+</main>
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- LE JQUERY OWL CAROUSSEL -->
+	<!-- <link rel="stylesheet" href="ressources/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="ressources/owl-carousel/owl.theme.default.min.css"> -->
+
+
+	  <!-- Bootstrap  -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+		
+  <!-- Chargement du CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+  	
+	<!-- LE FONTAWESOME -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+	
+
+  <!-- Titre de la page ------------------------------->
+  <title><?= $title ?></title>
+</head>
+<body>
+
+<!-- Le menu ------------------------------->
+  <header class="header">
+          <nav>
+						<!-- Redirection si administration -->
+						<?php if (isset($administration) && ($administration === true)) : ?> 
+							<a href="../index.php">Blog de Cédrick</a>
+							<a href="./login.php">Administration</a>
+							<!-- si utilisateur connecté -->
+							<?php if (!empty($_SESSION['email'])): ?>
+								 <div>
+									 <p><?= $_SESSION['username'];?></p>
+									 <a href="./logout.php">Logout</a>
+								 </div> 
+							<?php endif ?>	 
+						<!-- Redirection si page accueil-->
+						<?php else : ?>
+            <a href="index.php">Blog de Cédrick</a>
+            <a href="./admin/login.php">Administration</a>
+						<?php endif; ?>
+          </nav>         
+    </header>
+   <!-- <article class="owl-carousel owl-theme">
+			
+			<div class="image item" ><img  src="images/hollywood1.jpg" alt="photo"></img></div>
+			<div class="image item" ><img src="images/hollywood2.jpg" alt="photo"></img></div>
+			
+		</article>-->
+
+
+
+      <?php include($template); ?>
+
+<!-- Footer ------------------------------->
+
+  <footer>
+    <p></p>
+  </footer>
+
+  <!-- Script Carroussel ------------------------------->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="ressources/owl-carousel/owl.carousel.min.js"></script>
+	<script>
+		$('.owl-carousel').owlCarousel({
+		    loop:true,
+		    margin:10,
+		    responsiveClass:true,
+		    responsive:{
+		        0:{
+		            items:1,
+		            nav:true
+		        },
+		        600:{
+		            items:1,
+		            nav:true
+		        },
+		        1000:{
+		            items:3,
+		            nav:false,
+		            dots:false
+		        }
+		    }
+		})
+		
+	
+	</script> -->
+
+	<!-- Script Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  
+</body>
+</html>

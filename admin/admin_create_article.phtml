@@ -1,0 +1,83 @@
+
+<!-- L'ensemble du bloc Administration -->
+<main class="d-flex justify-content-lg-between col-lg-11">
+  <!-- Menu à gauche  -->
+
+  <section class="col-lg-4">
+    <ul class="list-group p-4">
+      <li class="list-group-item list-group-item-action  active mx-auto" aria-current="true">Gestion des articles</li>
+      <li class="list-group-item list-group-item-action  mx-auto">Gestion des catégories</li>
+      <li class="list-group-item list-group-item-action mx-auto">Gestion des auteurs</li>
+    </ul>
+  </section>
+
+
+
+
+  <!-- Bloc central droit -->
+  <section class="d-flex flex-column justify-content-lg-between bd-highlight col-lg-8 m-4">
+    <article class="p-12 d-flex flex-column ">
+      <h1 class="text-center">Rédiger un article</h1>
+    </article>
+
+    <article>
+
+    <!-- // FORMULAIRE *************************** -->
+    <form method="post" action ="./admin_create_article.php">
+    <!-- // CATEGORIES *************************** -->
+        <div class="mb-3 ">
+          <label for="select_category" class="form-label">Catégorie de l'article</label>
+          <select id="select_category" name="select_category" class="form-select">
+          <?php foreach($categories as $categorie): ?>
+            <option><?= $categorie['name'];  ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
+        <?php if (!empty($error['category'])) : ?>
+            <p class="text-danger"><?= $error['category'] ?></div>
+        <?php endif; ?>
+
+    <!-- // AUTHOR *************************** -->
+        <div class="mb-3">
+          <label for="select_author" class="form-label">Auteur</label>
+          <select id="select_author" name="select_author" class="form-select">
+            <?php foreach($authors as $author): ?>
+              <option><?= $author['firstname']." ".$author['lastname'];  ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
+        <?php if (!empty($error['author'])) : ?>
+          <p class="text-danger"><?= $error['author'] ?></div>
+        <?php endif; ?>
+
+    <!-- // TITLE *************************** -->
+        <div class="mb-3">
+          <label for="write_title" class="form-label">Titre de l'article*</label>
+          <input type="text" class="form-control <?= !empty($error['postTitle'])? 'is-invalid' : '' ?>" id="write_title" name="write_title"aria-describedby="write title"  maxlength="100" minlength="10" required value="<?= $postTitle ?>" >
+        </div>
+        <?php if (!empty($error['postTitle'])) : ?>
+            <p class="text-danger"><?= $error['postTitle'] ?></div>
+        <?php endif; ?>
+
+    <!-- // CONTENT *************************** -->
+        <div class="mb-3">
+          <label for="write_content" class="form-label">Texte de l'article*</label>
+          <textarea class="form-control <?= !empty($error['content']) ? 'is-invalid' : ''; ?>" spellcheck="true" rows="8" id="write_content" name="write_content" aria-describedby="write content"  maxlength="1000" minlength="100" required value="<?= $content ?>" ></textarea>
+        </div>
+        <?php if (!empty($error['content'])) : ?>
+            <p class="text-danger"><?= $error['content'] ?></div>
+        <?php endif; ?>
+
+    <!-- // BOUTON VALIDATION *************************** --> 
+      <button type="submit" class="btn btn-primary" value="Enregistrer" name="submit">Enregistrer</button>
+    </form>
+
+    </article>
+  </section>
+
+
+
+  
+
+
+</main>

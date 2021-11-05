@@ -1,0 +1,248 @@
+/* ***************************************************************
+Fil d'arianne
+*************************************************************** */
+
+.fil_arianne{
+  width: 100%;
+  background-color: rgba( 181, 181, 170, 0.4 );
+  height: 30px;
+}
+
+.fil_arianne ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.fil_arianne ul li a{
+  text-decoration: none;
+  list-style: none;
+  margin-left: 20px;
+  color: black;
+  line-height: 30px;
+
+}
+
+.fil_arianne ul li a:after{
+  content: " > ";
+  text-decoration: none;
+  list-style: none;
+  margin-left: 20px;
+
+}
+
+.fil_arianne ul li p {
+  margin-left: 20px;
+  color: black;
+  line-height: 30px;
+}
+
+/* ***************************************************************
+Présentation du bloc article
+*************************************************************** */
+.__box_article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ***************************************************************
+Présentation du show article
+*************************************************************** */
+.__show_articles .entete_article {
+  
+  width:100%;
+  height: 400px;
+
+  position: relative;
+  
+  overflow: hidden;
+  background-color: rgba( 181, 181, 170, 0.4);
+  
+}
+
+.__show_articles .entete_article img{
+  width: 100%;
+  margin: auto;
+
+}
+
+.__show_articles .entete_article p{
+  margin-left: 50px;
+
+  position:absolute;
+  top: 270px;
+
+  color: white;
+  font-size: 1.4rem;
+  z-index: 800;
+}
+
+.__show_articles .entete_article p::before{
+  content: "|";
+  color: white;
+  z-index: 800;
+  margin-right: 20px;
+}
+
+.__show_articles .entete_article p::after{
+  content: "|";
+  color: white;
+  z-index: 800;
+  margin-left: 20px;
+}
+
+
+.__show_articles .entete_article h3{
+  margin-left: 50px;
+
+  position:absolute;
+  top: 330px;
+
+  color: white;
+  font-size: 2rem;
+  z-index: 800;
+
+}
+
+.__show_articles .entete_article span{
+  margin-left: 50px;
+
+  position:absolute;
+  bottom: -20px;
+
+  color: rgb(12, 12, 12);
+  font-size: 1.2rem;
+  font-weight: 400;
+  z-index: 800;
+
+}
+
+.__show_articles .content_article {
+  width: calc (100% - 80px);
+  padding: 40px;
+}
+
+.__show_articles .content_article p{
+  
+  font-size: 1.2rem;
+  line-height: 25px;
+
+  text-align: justify;
+}
+
+.__show_articles .content_article span{
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 50px;
+}
+
+/* ***************************************************************
+Trait separation
+*************************************************************** */
+
+.horizontal_line{
+  width: 60%;
+  height: 1px;
+  border-top: 1px dashed indianred;
+  margin:auto;
+}
+
+/* ***************************************************************
+Présentation du write article
+*************************************************************** */
+
+.__comment{
+  /* display: none; */
+  
+  width:100%;
+  height: auto;
+  margin-left: 50px;
+  padding: 20px;
+
+
+
+
+}
+
+.__comment #btn_write_comment{  
+  width:200px;
+  height: 30px;
+
+  line-height: 30px;
+  margin: 30px;
+
+  outline:none;
+  border-radius: 5px;
+  border: none;
+
+  background-color: indianred;
+  color: white;
+}
+
+.__comment #btn_write_comment:hover{  
+  box-shadow: 10px 10px 5px rgba( 181, 181, 170, 0.4 );
+  transform: translate(5px, 5px);
+}
+
+.__comment .comment_show_write {
+  width: 100%;
+  display:flex;
+  
+}
+
+
+.__comment .__write_comment {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.__comment .nb_comment {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 15px;
+  text-align: left;
+}
+
+
+
+.__comment .__write_comment form{  
+  width: 150px;
+  height: 100px;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* .display_none_form{
+  display:none;
+} */
+
+.__comment .__show_comment{
+  
+  width:60%;
+  height: auto;
+
+  
+}
+
+.__comment .__show_comment p:nth-of-type(1){
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 20px;
+  text-align: left;
+}
+
+
+.__comment .__show_comment p:nth-of-type(2){
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin: 20px;
+  text-align: left;
+}

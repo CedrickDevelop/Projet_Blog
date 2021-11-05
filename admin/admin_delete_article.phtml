@@ -1,0 +1,86 @@
+
+<!-- L'ensemble du bloc Administration -->
+<main class="d-flex justify-content-lg-between col-lg-11">
+  <!-- Menu à gauche  -->
+
+  <section class="col-lg-4">
+    <ul class="list-group p-4">
+      <li class="list-group-item list-group-item-action  active mx-auto" aria-current="true">Gestion des articles</li>
+      <li class="list-group-item list-group-item-action  mx-auto">Gestion des catégories</li>
+      <li class="list-group-item list-group-item-action mx-auto">Gestion des auteurs</li>
+    </ul>
+  </section>
+
+
+
+
+  <!-- Bloc central droit -->
+  <section class="d-flex flex-column justify-content-lg-between bd-highlight col-lg-8 m-4">
+    <article class="p-12 d-flex flex-column ">
+      <h1 class="text-center">Supprimer un article</h1>
+    </article>
+
+    <article>
+
+    <form method="post" action ="./admin_delete_article.php?id=<?= $article['id']; ?>">
+
+         <!-- Categorie -->
+         <div class="mb-3">
+            <label for="select_category" class="form-label">Catégorie de l'article</label>
+            <input type="text" class="form-control" id="disabledInput" name="select_category" aria-describedby="write title" value="<?= $article['name'];  ?>" disabled>
+          </div>
+         
+        <!-- Auteur -->
+        <div class="mb-3">
+          <label for="select_author" class="form-label">Auteur</label>
+          <input type="text" class="form-control" id="disabledInput" name="select_author" aria-describedby="write title" value="<?= $article['firstname']." ".$article['lastname'] ;  ?>" disabled>
+        </div>
+
+      <!-- Titre -->  
+      <div class="mb-3">
+        <label for="write_title" class="form-label">Titre de l'article</label>
+        <input type="text" class="form-control" id="disabledInput" name="write_title" aria-describedby="write title" value="<?= $article['title']; ?>" disabled>
+      </div>
+
+      <!-- Contenu -->
+      <div class="mb-3">
+        <label for="write_content" class="form-label">Texte de l'article</label>
+        <textarea type="text" class="form-control" id="disabledInput" name="write_content" aria-describedby="write content" disabled>
+          <?= $article['contents']; ?>
+        </textarea>
+      </div>
+
+      <!-- ID -->
+      <input type="hidden" name="id" value="<?= $article['id']; ?>">
+
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary md-8" value="Enregistrer" name="submit">Supprimer</button>
+      </div>
+      <p class="text-center m-2">Etes vous sûr de vouloir supprimer cet article ? Cette action est irréversible</p>
+    </form>
+
+    </article>
+
+    <!-- <div class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Supprimer l'article</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Toute suppression d'article sera définitive. Êtes-vous sûr ?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Revenir</button>
+            <button type="button" class="btn btn-primary">Oui je supprime</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+  </section>
+
+
+</main>

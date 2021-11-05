@@ -1,0 +1,167 @@
+
+  <!-- Entete de la page -------------------------------> 
+  <section class="fil_arianne">
+     <ul>
+      <li><a href="index.php">Accueil</a></li>
+      <li><a href="#"><?= htmlspecialchars($articles[0]['name']) ?></a></li>
+      <li><p><?= $articles[0]['title'] ?></p></li>
+    </ul>
+  </section>
+          
+  <!-- Affichage de l'article sélectionné articles----------------------------> 
+  <section class="__box_article">
+
+    <article class="__show_articles">
+  
+        <?php foreach ($articles as $article ): ?>
+  
+            <div class="entete_article">
+                <img src="./images/windmill-6307058_1280.jpg">
+                <p><?= $article['name']; ?></p>
+                <h3> <?= $article['title']; ?></h3>
+                
+            </div>
+              
+            
+            <div class="content_article">
+  
+              <p><?= $article['contents']; ?></p>
+  
+              <span>De <?= $article['firstname'].' '.$article['lastname']; ?> le <?= $article['created_at']; ?></span>
+  
+            </div>        
+  
+            <?php endforeach ; ?>
+    </article>
+  
+    <div class="horizontal_line"></div>
+
+    <article class="__comment">
+            <h4>Les commentaires</h4>
+            
+            <!-- Ecrire des commentaires -->
+            <div class="__write_comment">
+
+              <button id="btn_write_comment">Laisser un commentaire</button>
+              
+              <form action="./traitement.php" method="post" id="comment_form" class="display_none_form">
+                <label for="comment_pseudo">Votre pseudo</label>
+                <input type="text" name="comment_pseudo" id="comment_pseudo" >
+                
+                <label for="comment_content">Votre Commentaire</label>
+                <textarea type="text" name="comment_content" id="comment_content" ></textarea>
+                
+                <input type="hidden" name="comment_id_posts" value="<?= $articles[0]['id']; ?>">
+
+                <input type="submit" value="Commenter">
+              
+                <p>
+                <?php if (!empty($message_comment_error)) {
+                      echo $message_comment_error;
+                      } 
+                ?>
+                </p>
+              
+              </form>
+
+
+            </div> 
+
+            <!-- Affichage des commentaires -->
+
+            <p class="nb_comment">
+
+              <?php if (empty($comments_number['nb'])) {
+                    echo "Il n'y pas de commentaire pour le moment, soyez le premier !";
+              } else {
+                echo "il y a " .$comments_number['nb']. " commentaires" ;
+              }
+              ?>
+                
+                <?php if (isset($message_comment)){
+                  echo ", ".$message_comment;
+                }
+                ?>
+            </p>
+            
+            
+            <?php foreach($comments as $comment): ?>
+            <div class="__show_comment">
+              <p> <i class="far fa-comment-dots"></i> <?= $comment['nickname']. ' le '. $comment['created_at'];  ?></p>
+              <p> <?= $comment['content'];  ?></p>
+            </div> 
+            <?php endforeach ?>
+    </article>
+    <div class="horizontal_line"></div> 
+    
+    
+            <!--REORGANISATION DES COMMENTAIRES 
+    <article class="__comment">      
+            <h4>Les commentaires</h4>
+            <button id="btn_write_comment">Laisser un commentaire</button>
+            <p class="nb_comment">
+
+                          <?php if (empty($comments_number['nb'])) {
+                                echo "Il n'y pas de commentaire pour le moment, soyez le premier !";
+                          } else {
+                            echo "il y a " .$comments_number['nb']. " commentaires" ;
+                          }
+                          ?>
+                            
+                            <?php if (isset($message_comment)){
+                              echo ", ".$message_comment;
+                            }
+                            ?>
+            </p>
+
+            
+            <div class="comment_show_write">
+
+              <?php foreach($comments as $comment): ?>
+              <div class="__show_comment">
+                <p> <i class="far fa-comment-dots"></i> <?= $comment['nickname']. ' le '. $comment['created_at'];  ?></p>
+                <p> <?= $comment['content'];  ?></p>
+              </div> 
+              <?php endforeach ?>
+
+              <div class="__write_comment">
+  
+                <form action="./traitement.php" method="post" id="comment_form" class="display_none_form">
+                  <label for="comment_pseudo">Votre pseudo</label>
+                  <input type="text" name="comment_pseudo" id="comment_pseudo" >
+                  
+                  <label for="comment_content">Votre Commentaire</label>
+                  <textarea type="text" name="comment_content" id="comment_content" ></textarea>
+                  
+                  <input type="hidden" name="comment_id_posts" value="<?= $articles[0]['id']; ?>">
+  
+                  <input type="submit" value="Commenter">
+                
+                  <p>
+                  <?php if (!empty($message_comment_error)) {
+                        echo $message_comment_error;
+                        } 
+                  ?>
+                  </p>
+                
+                </form>
+  
+              </div> 
+
+            </div>-->
+            
+
+            
+
+
+
+            <!-- Affichage des commentaires -->
+
+            
+            
+            
+            
+    </article>
+  </section>
+
+  <script src="./script/show_article_comment.js"></script>
